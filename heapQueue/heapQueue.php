@@ -1,5 +1,16 @@
 <?php
-$br = (php_sapi_name() == "cli")? "":"<br>";
+
+$base =  base64_encode(file_get_contents("http://code.youquwei.net/img/08-07/f41c8b2d-e2ed-4d18-a1ea-b9a0f28931a9.png"));
+
+$str = file_get_contents("head-data-struct.md");
+
+$str = str_replace("http://code.youquwei.net/img/08-07/f41c8b2d-e2ed-4d18-a1ea-b9a0f28931a9.png",
+$base,
+$str
+);
+file_put_contents("head-data-struct.md", $str);
+
+/*$br = (php_sapi_name() == "cli")? "":"<br>";
 
 if(!extension_loaded('heapQueue')) {
 	dl('heapQueue.' . PHP_SHLIB_SUFFIX);
@@ -37,5 +48,5 @@ echo "--------------".PHP_EOL;
  echo "--------------".PHP_EOL;
  var_dump($obj->pop());
  var_dump($obj->getNum());
- echo "--------------".PHP_EOL;
+ echo "--------------".PHP_EOL;*/
 ?>
