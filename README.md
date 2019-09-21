@@ -35,8 +35,10 @@ static int le_*;//使用这个作为标示，而且这个变量只在文件中�
 
 ***
 #二叉堆扩展的说明
+
   本扩展是基于数组来实现的二叉堆的存储。二叉堆的结构说明及插入，删除操作在本目录下的[heap-data-staruct](https://github.com/lihongsheng/php-study-extend/heapQueue/heap-data-staruct.md)
    二叉堆队列扩展对应 heapQueue目录：(https://github.com/lihongsheng/php-study-extend/heapQueue) 
+   
   ---
 + 内存的操作
   + 使用emalloc函数申请内存【emalloc对应着C的malloc，e*开头的内存操作函数是PHP内核提供的一种申请内存的函数做了一定封装，防止内存溢出等问题】
