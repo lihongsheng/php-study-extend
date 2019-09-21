@@ -12,10 +12,8 @@
 ![插入底部](http://code.youquwei.net/img/08-07/f41c8b2d-e2ed-4d18-a1ea-b9a0f28931a9.png "插入底部")
 >>2:上移 14 与父节点互换值
 ![上移 14 与父节点互换值](http://code.youquwei.net/img/08-07/fef77d6f-6a19-478a-8268-ea7f6f5a2883.png "上移 14 与父节点互换值")
-
 >>3:判断继续上移与父节点【21】互换值
 ![判断继续上移与父节点【21】互换值](http://code.youquwei.net/img/08-07/d09b977c-8f72-4536-ab8f-e194698dead6.png "判断继续上移与父节点【21】互换值")
-
 >>到达条件退出上浮操作.
 
 ```
@@ -57,7 +55,7 @@ function insert(&$arr, $value) {
 
 31上移替换跟21的值
 
-![image](http://code.youquwei.net/img/08-07/bf50d17f-e654-40b2-a687-9da633fae3a1.png "删除最后一个节点"）
+![删除最后一个节点](http://code.youquwei.net/img/08-07/bf50d17f-e654-40b2-a687-9da633fae3a1.png "删除最后一个节点"）
 
 删除最后一个节点
 
