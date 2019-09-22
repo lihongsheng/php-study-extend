@@ -63,6 +63,8 @@ heapTable_t * heap_init(int minNum)
 int heap_insert(heapTable_t *heap,void *data,int score)
 {
     brucket_t *br = emalloc(sizeof(brucket_t));
+    // zval *dd;
+    // memcpy(dd,(zval *)data, sizeof(zval));
     br->data   = data;
     br->score  = score;
     br->status = 1;
@@ -73,7 +75,7 @@ int heap_insert(heapTable_t *heap,void *data,int score)
 
     /**
      * 扩充内存
-     */ 
+     */
     if (heap->validSize == heap->tablezSize) {
        // printf("%d\n",heap->tablezSize);
         heap->tablezSize  = heap->tablezSize * 2;
@@ -93,16 +95,17 @@ int heap_insert(heapTable_t *heap,void *data,int score)
         int j = (i - 1) / 2;
         if(j>=0 && heap->arHeap[i]->score < heap->arHeap[j]->score) {
             brucket_t *tmp   = heap->arHeap[j];
-            heap->arHeap[j] = heap->arHeap[i];
-            heap->arHeap[i] = tmp;
+            heap->arHeap[j]  = heap->arHeap[i];
+            heap->arHeap[i]  = tmp;
             i = j;
         } else {
             break;
         }
     }
 
+    php_printf("head==%d\n", heap->arHeap[heap->validSize]->score);
     php_printf("head==%d\n", heap->arHeap[0]->score);
-
+    php_printf("head==%d\n", heap->validSize);
     heap->validSize++;
     return 1;
     

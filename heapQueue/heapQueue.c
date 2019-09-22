@@ -124,15 +124,28 @@ ZEND_END_ARG_INFO()
 
 PHP_METHOD(heapQueue, push)
 {
-	zval *value;
+	char *value;
+	int charLen;
 	long score;
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS(),"lz", &score, &value)  == FAILURE ) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS(),"ls", &score, &value, &charLen)  == FAILURE ) {
 		RETURN_FALSE;
 	}
-	switch(heap_insert(heapTablePtr,value,(int)score)) {
+
+	// switch (Z_TYPE_P(value)) {
+	// 	case IS_STRING:
+	// 		php_printf("IS_STRING::\n");
+	// 		break;
+	// 	case IS_INDIRECT:
+	// 	    php_printf("IS_INDIRECT::\n");
+	// 		break;
+	// 	default:
+	// 		break;
+	// }
+	php_printf("指针地址==%d\n", value);
+	switch(heap_insert(heapTablePtr, (void *)value, (int)score)) {
 		case 1:
-		    Z_TRY_ADDREF_P(value);//加一次引用计数
+		    //Z_TRY_ADDREF_P(value);//加一次引用计数
 		    RETURN_TRUE;
 			break;
 		case -1:
@@ -149,7 +162,7 @@ ZEND_END_ARG_INFO()
 
 PHP_METHOD(heapQueue, pop)
 {
-	zval *value;
+	char *value;
 	switch (heap_pop(heapTablePtr,(void **)&value))
 	{
 	case 0:
@@ -158,28 +171,31 @@ PHP_METHOD(heapQueue, pop)
 		break;
 	default:
 	    /* */
-		switch(Z_TYPE_P(value)) {
-			// case IS_NULL:
-			//     RETURN_NULL();
-			// 	break;
-		    // case IS_TRUE:
-			// 	RETURN_TRUE;
-			// 	break;
-		    // case IS_FALSE:
-			// 	RETURN_FALSE;
-			// 	break;
-			// case IS_INDIRECT:
-			// 	RETURN_LONG(value);
-			// 	break;
-			// case IS_ARRAY:
-			// 	RETURN_ARR(value);
-			// 	break;
-			// case IS_STRING:
-			// 	RETURN_STRING(value);
-			// 	break;
-			default:  
-				RETURN_ZVAL(value,0,0);
-		}
+		// switch(Z_TYPE_P(value)) {
+		// 	case IS_NULL:
+		// 	    RETURN_NULL();
+		// 		//break;
+		//     case IS_TRUE:
+		// 		RETURN_TRUE;
+		// 		//break;
+		//     case IS_FALSE:
+		// 		RETURN_FALSE;
+		// 		//break;
+		// 	case IS_INDIRECT:
+		// 		//RETURN_LONG(Z_INDIRECT_P(value));
+		// 		//break;
+		// 		php_printf("IS_INDIRECT::\n");
+		// 	case IS_ARRAY:
+		// 		//RETURN_ARR(Z_ARR_P(value));
+		// 		//break;
+		// 	case IS_STRING:
+		// 		//RETURN_STRING(Z_STR_P(value));
+		// 		//break;
+		// 		php_printf("IS_STRING::\n");
+		// 	default:
+		// 		RETVAL_ZVAL(value,0,1);
+		// }
+		RETURN_STRING(value);
 		break;
 	}
 }
