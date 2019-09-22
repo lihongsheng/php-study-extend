@@ -18,8 +18,10 @@ PHP扩展学习
       + 模块关闭阶段
             模块关闭阶段，可以一些资源回收的等待工作
 ---
+
 #扩展开发的一些说明
-  待补充
+
+  [php扩展开发及内核应用相关内容](https://github.com/lihongsheng/php-study-extend/blob/master/PHP-%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E5%8F%8A%E5%86%85%E6%A0%B8%E5%BA%94%E7%94%A8%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9-v1.0.pdf)
 
 ---
 #链表队列扩展的说明
